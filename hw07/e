@@ -1,0 +1,11 @@
+#include <stdlib.h>
+#include <stdio.h>
+#include "clog.h"
+
+int main(int argc, char* argv[]) {
+	char* city_name = "Bogota";
+	int population_pct = 15;
+	logf_("%d%% of Colombia lives in %s.\n", population_pct, city_name);
+	logf_red("%s\n", "RED");
+	return EXIT_SUCCESS;
+}

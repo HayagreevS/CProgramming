@@ -1,0 +1,72 @@
+        -:    0:Source:sorts.c
+        -:    0:Graph:sorts.gcno
+        -:    0:Data:sorts.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:#include <stdio.h>
+        -:    2:#include <stdlib.h>
+        -:    3:#include <stdbool.h>
+        -:    4:#include <assert.h>
+        -:    5:#include "sorts.h"
+        -:    6:
+        8:    7:static struct BSTNode* newBST(int val) {
+        8:    8:	BSTNode* x = malloc(sizeof(BSTNode));
+        8:    9:	x -> value = val;
+        8:   10:	x -> right = NULL;
+        8:   11:	x -> left = NULL;
+        8:   12:	return x;
+        -:   13:}
+        -:   14:
+       18:   15:static BSTNode*  _insert(int val, BSTNode* root) {
+       18:   16:	if(root == NULL) {	
+        8:   17:		return newBST(val);
+        -:   18:	}
+        -:   19:
+       10:   20:	else if(val < (root -> value)) {
+        2:   21:		root -> left = _insert(val, root -> left);
+        -:   22:	}
+        -:   23:	else {
+        8:   24:		root -> right = _insert(val, root -> right);
+        -:   25:	}
+       10:   26:	return root;
+        -:   27:}
+        -:   28:
+       18:   29:static void _destroy(BSTNode* root) {
+       18:   30:	if(root != NULL) {
+        8:   31:		_destroy(root -> left);
+        8:   32:		_destroy(root -> right);
+        8:   33:		free(root);
+        -:   34:	}
+       18:   35:	root = NULL;
+       18:   36:}
+        -:   37:
+        9:   38:static void _fill_array_from_bst(int* array, BSTNode* node, int* i) {
+        9:   39:	if(node != NULL) {
+        4:   40:		_fill_array_from_bst((array), (node -> left), i);
+        4:   41:		*(array + (*i)) = node -> value;
+        4:   42:		*i = *i + 1;
+        4:   43:		_fill_array_from_bst((array), (node -> right), i);
+        -:   44:	}
+        9:   45:}
+        -:   46:
+        -:   47:
+        2:   48:BST create_bst(const int* array, int size) {
+        2:   49:	BST tree = {.root = NULL, .size = size};
+       10:   50:	for(int i = 0; i < size; i++) {
+        8:   51:		tree.root = _insert(*(array + i), (tree.root));
+        -:   52:	}
+        2:   53:	return tree;
+        -:   54:}
+        -:   55:
+        2:   56:void empty_bst(BST* bst) {
+        2:   57:	_destroy(bst -> root);
+        2:   58:}
+        -:   59:
+        1:   60:void tree_sort_array(int* array, size_t size){
+        1:   61:	BST tree = create_bst(array, (int) size);
+        1:   62:	int i = 0;
+        1:   63:	_fill_array_from_bst(array, tree.root, &i);
+        1:   64:	empty_bst(&tree);
+        1:   65:}
+        -:   66:
+        -:   67:/* vim: set tabstop=4 shiftwidth=4 fileencoding=utf-8 noexpandtab: */

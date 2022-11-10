@@ -1,0 +1,69 @@
+Breakpoint 1 at 0x4005e0: file prime_factor.c, line 17.
+Starting program: /home/shay/a/hsarvabh/264/hw03/prime_factor 
+
+Breakpoint 1, print_prime_factors (n=6) at prime_factor.c:17
+17	    if(n <= 0) {
+21	        printf("Prime factors of %d:", n);
+Continuing.
+
+Breakpoint 1, print_prime_factors (n=1) at prime_factor.c:17
+17	    if(n <= 0) {
+Continuing.
+
+Breakpoint 1, print_prime_factors (n=0) at prime_factor.c:17
+17	    if(n <= 0) {
+Continuing.
+
+Breakpoint 1, print_prime_factors (n=48) at prime_factor.c:17
+17	    if(n <= 0) {
+Continuing.
+
+Breakpoint 1, print_prime_factors (n=49) at prime_factor.c:17
+17	    if(n <= 0) {
+Execute until past the current line or past a LOCATION.
+Execute until the program reaches a source line greater than the current
+or a specified location (same args as break command) within the current frame.
+main (argc=1, argv=0x7fffffffdd78) at test_prime_factor.c:12
+12		print_prime_factors(74); // 2 37
+No line 34 in the current file.
+No line 16 in the current file.
+Starting program: /home/shay/a/hsarvabh/264/hw03/prime_factor until 34
+
+Breakpoint 1, print_prime_factors (n=6) at prime_factor.c:17
+17	    if(n <= 0) {
+print_prime_factors (n=3) at prime_factor.c:34
+34	            for(int i = 3; i * i < n; i += 2) {
+43	            if(n >= 3) {
+44	                printf(" %d", n);
+47	        printf("\n");
+49	}
+Starting program: /home/shay/a/hsarvabh/264/hw03/prime_factor until 34
+
+Breakpoint 1, print_prime_factors (n=6) at prime_factor.c:17
+17	    if(n <= 0) {
+Continuing.
+
+Breakpoint 1, print_prime_factors (n=1) at prime_factor.c:17
+17	    if(n <= 0) {
+Continuing.
+
+Breakpoint 1, print_prime_factors (n=0) at prime_factor.c:17
+17	    if(n <= 0) {
+Continuing.
+
+Breakpoint 1, print_prime_factors (n=48) at prime_factor.c:17
+17	    if(n <= 0) {
+Continuing.
+
+Breakpoint 1, print_prime_factors (n=49) at prime_factor.c:17
+17	    if(n <= 0) {
+print_prime_factors (n=49) at prime_factor.c:34
+34	            for(int i = 3; i * i < n; i += 2) {
+37	                while(n % i == 0) {
+34	            for(int i = 3; i * i < n; i += 2) {
+37	                while(n % i == 0) {
+34	            for(int i = 3; i * i < n; i += 2) {
+43	            if(n >= 3) {
+44	                printf(" %d", n);
+47	        printf("\n");
+49	}
